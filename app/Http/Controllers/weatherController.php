@@ -8,6 +8,13 @@ use Illuminate\Support\Facades\Auth;
 
 class weatherController extends Controller
 {
+    /**
+     * 
+     * if the client is login then check usercity table if he save 
+     * city name redirect with city name and show it in weather information page or 
+     *  or redirect to weather without usercity saved city
+     * @return void
+     */
     public function index()
     {
         if (Auth::check()) {
@@ -38,6 +45,10 @@ class weatherController extends Controller
             return view('weather');
         }
     }
+    /**
+     * redirect the select city name request from weather page
+     * @return void
+     */
     public function weatherCall(Request $request)
     {
 
@@ -61,6 +72,10 @@ class weatherController extends Controller
             return view('weather', compact('errorCity'));
         }
     }
+       /**
+     * if the user need to save city name in usercity table 
+     * @return void
+     */
     public function storeCity(Request $request)
     {
         // The user is logged in...
